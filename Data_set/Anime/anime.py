@@ -3,7 +3,7 @@ import pandas as pd
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
 
-data = pd.read_csv('D:/Pulls/Projects/Data_set/anime.csv')
+data = pd.read_csv('D:/Pulls/Projects/Data_set/Anime/anime.csv')
 df = pd.DataFrame(data)
 
 # 1. make a new column for episode count
