@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_login_page/signup_button.dart';
+import 'package:spotify_login_page/social_button.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -20,7 +21,7 @@ class LoginPage extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 150),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
-            
+
             children: [
               Image.asset("assets/images/spotify_icon.png", height: 60),
               const SizedBox(height: 20),
@@ -43,124 +44,36 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 70),
               SignupButton(),
               const SizedBox(height: 10),
-              
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 45,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusGeometry.circular(30),
-                        side: const BorderSide(color: Colors.white24),
-                      ),
-                      padding: EdgeInsetsGeometry.symmetric(horizontal: 25),
-                    ),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Image.asset(
-                            "assets/images/phone_icon.png",
-                            height: 20,
-                          ),
-                        ),
-                        const Text("Continue with phone number",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),),
-                      ],
-                    ),
+
+              SocialButton(
+                icon: "assets/images/phone_icon.png",
+                label: "Continue with phone number",
+              ),
+              const SizedBox(height: 10),
+
+              SocialButton(
+                icon: "assets/images/google.png",
+                label: "Continue with Google",
+              ),
+              const SizedBox(height: 10),
+
+              SocialButton(
+                icon: "assets/images/facebook.png",
+                label: "Continue with facebook",
+              ),
+              const SizedBox(height: 10),
+
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  "Log in",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
-          
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 45,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusGeometry.circular(30),
-                        side: const BorderSide(color: Colors.white24),
-                      ),
-                      padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
-                    ),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Image.asset(
-                            "assets/images/google.png",
-                            height: 23,
-                          ),
-                        ),
-                        const Text("Continue with Google",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-          
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 45,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusGeometry.circular(30),
-                        side: const BorderSide(color: Colors.white24),
-                      ),
-                      padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
-                    ),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Image.asset(
-                            "assets/images/facebook.png",
-                            height: 25,
-                          ),
-                        ),
-                        const Text("Continue with facebook",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-          
-              TextButton(onPressed: (){}, child: Text("Log in",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-              ),))
             ],
           ),
         ),

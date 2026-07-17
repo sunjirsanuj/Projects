@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SignupButton extends StatelessWidget {
-  const SignupButton({super.key});
+class SocialButton extends StatelessWidget {
+  final String icon;
+  final String label;
+  const SocialButton({super.key, required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +15,23 @@ class SignupButton extends StatelessWidget {
         child: TextButton(
           onPressed: () {},
           style: TextButton.styleFrom(
-            backgroundColor: Color(0xFF00D361),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.circular(30),
+              side: const BorderSide(color: Colors.white24),
+            ),
             padding: EdgeInsetsGeometry.symmetric(horizontal: 25),
           ),
           child: Stack(
             alignment: Alignment.center,
             children: [
-              const Text(
-                "Sign up free",
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Image.asset(icon, height: 20),
+              ),
+              Text(
+                label,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
