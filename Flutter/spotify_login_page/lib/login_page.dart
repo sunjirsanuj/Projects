@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_login_page/signup_button.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -40,32 +41,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 70),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 45,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                     backgroundColor: Color(0xFF00D361),
-                      padding: EdgeInsetsGeometry.symmetric(horizontal: 25),
-                    ),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                      
-                        const Text("Sign up free",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              SignupButton(),
               const SizedBox(height: 10),
               
               Padding(
