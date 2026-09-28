@@ -47,7 +47,7 @@ class IntroPage extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return HomePage();
+                  return const HomePage();
                 },
               ),
             ),
