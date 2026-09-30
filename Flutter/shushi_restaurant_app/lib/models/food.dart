@@ -11,8 +11,8 @@ class Food {
     required this.rating
   });
 
-  get _name => name;
-  get _price => price;
-  get _imagePath => imagePath;
-  get _rating => rating;
+  String get _name => name;
+  String get _price => price;
+  String get _imagePath => imagePath;
+  String get _rating => rating;
 }
