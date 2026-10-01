@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shushi_restaurant_app/componentes/button.dart';
 import 'package:shushi_restaurant_app/componentes/food_tile.dart';
 import 'package:shushi_restaurant_app/models/food.dart';
+import 'package:shushi_restaurant_app/pages/food_detail_page.dart';
 import 'package:shushi_restaurant_app/themes/colors.dart';
 
 class MenuPage extends StatefulWidget {
@@ -39,6 +40,16 @@ class _MenuPageState extends State<MenuPage> {
       rating: "4.9",
     ),
   ];
+
+  // navigate to food item details page
+  void navigateToFoodDetailPage(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FoodDetailPage(food: FoodMenu[index]),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +108,6 @@ class _MenuPageState extends State<MenuPage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextField(
-              
               decoration: InputDecoration(
                 hintText: "Search Here..",
                 focusedBorder: OutlineInputBorder(
@@ -131,7 +141,10 @@ class _MenuPageState extends State<MenuPage> {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: FoodMenu.length,
-              itemBuilder: (context, index) => FoodTile(food: FoodMenu[index]),
+              itemBuilder: (context, index) => FoodTile(
+                food: FoodMenu[index],
+                onTap: () => navigateToFoodDetailPage(index),
+              ),
             ),
           ),
           const SizedBox(height: 25),
