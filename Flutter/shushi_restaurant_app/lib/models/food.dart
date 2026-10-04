@@ -8,7 +8,7 @@ class Food {
     required this.name,
     required this.price,
     required this.imagePath,
-    required this.rating
+    required this.rating,
   });
 
   String get _name => name;
