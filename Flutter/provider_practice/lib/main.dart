@@ -29,69 +29,97 @@ class MyApp extends StatelessWidget {
           ),
         ),
 
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
+        body: Consumer<CounterProvider>(
+          builder: (context, value, child) {
+            return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Steps:"),
+                    const SizedBox(width: 15,),
+                    ElevatedButton(onPressed: () {
+                      return context.read<CounterProvider>().changeStep(1);
+                    }, child: Text("+1")),
+                    const SizedBox(width: 10,),
+                    ElevatedButton(onPressed: () {
+                      return context.read<CounterProvider>().changeStep(3);
+                    }, child: Text("+3")),
+                    const SizedBox(width: 10,),
+                    ElevatedButton(onPressed: () {
+                      return context.read<CounterProvider>().changeStep(5);
+                    }, child: Text("+5")),
+                  ],
+                ),
+                const SizedBox(height: 30,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        context.read<CounterProvider>().decrement();
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(15),
+                        margin: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.red.shade200,
+                        ),
+                        child: Icon(
+                          Icons.remove,
+                          size: 30,
+                          color: Colors.grey.shade900,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 40,
+                      alignment: Alignment.center,
+                      child: Text(
+                        value.count.toString(),
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        context.read<CounterProvider>().increment();
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(15),
+                        margin: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.green.shade200,
+                        ),
+                        child: Icon(
+                          Icons.add,
+                          size: 30,
+                          color: Colors.grey.shade900,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+
                 GestureDetector(
                   onTap: () {
-                    context.read<CounterProvider>().decrement();
+                    context.read<CounterProvider>().reset();
                   },
                   child: Container(
                     padding: const EdgeInsets.all(15),
-                    margin: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
+                      color: Colors.grey,
                       shape: BoxShape.circle,
-                      color: Colors.red.shade200,
                     ),
-                    child: Icon(
-                      Icons.remove,
-                      size: 30,
-                      color: Colors.grey.shade900,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 40,
-                  alignment: Alignment.center,
-                  child: CounterDisplay(),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    context.read<CounterProvider>().increment();
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(15),
-                    margin: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.green.shade200,
-                    ),
-                    child: Icon(Icons.add, size: 30, color: Colors.grey.shade900),
+                    child: Icon(Icons.refresh, size: 30),
                   ),
                 ),
               ],
-            ),
-            const SizedBox(height: 20,),
-        
-            GestureDetector(
-              onTap: (){
-                context.read<CounterProvider>().reset();
-              },
-              child: Container(
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  shape: BoxShape.circle
-                ),
-                child: Icon(Icons.refresh,
-                size: 30,
-                ),
-              ),
-            ),
-          ]
+            );
+          },
         ),
       ),
     );
@@ -99,17 +127,17 @@ class MyApp extends StatelessWidget {
 }
 
 
-class CounterDisplay extends StatelessWidget {
-  const CounterDisplay({super.key});
+// class CounterDisplay extends StatelessWidget {
+//   const CounterDisplay({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final counter = context.watch<CounterProvider>();
-    return Text(
-      counter.count.toString(),
-      style: TextStyle(
-        fontSize: 30,
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     final counter = context.watch<CounterProvider>();
+//     return Text(
+//       counter.count.toString(),
+//       style: TextStyle(
+//         fontSize: 30,
+//       ),
+//     );
+//   }
+// }
