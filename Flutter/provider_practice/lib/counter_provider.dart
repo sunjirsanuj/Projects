@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 
 class CounterProvider extends ChangeNotifier {
   int count = 0;
+  int step = 1;
 
   void increment() {
-    count++;
+    count += step;
     notifyListeners();
   }
 
-  void decrement(){
-    if (count > 0) count--;
+  void decrement() {
+    count -= step;
     notifyListeners();
   }
 
-  void reset(){
+  void reset() {
     count = 0;
     notifyListeners();
   }
