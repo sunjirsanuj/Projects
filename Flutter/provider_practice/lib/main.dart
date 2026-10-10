@@ -29,49 +29,69 @@ class MyApp extends StatelessWidget {
           ),
         ),
 
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  context.read<CounterProvider>().decrement();
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(15),
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.red.shade200,
-                  ),
-                  child: Icon(
-                    Icons.remove,
-                    size: 30,
-                    color: Colors.grey.shade900,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    context.read<CounterProvider>().decrement();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(15),
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.red.shade200,
+                    ),
+                    child: Icon(
+                      Icons.remove,
+                      size: 30,
+                      color: Colors.grey.shade900,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                width: 40,
-                alignment: Alignment.center,
-                child: CounterDisplay(),
-              ),
-              GestureDetector(
-                onTap: () {
-                  context.read<CounterProvider>().increment();
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(15),
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.green.shade200,
+                Container(
+                  width: 40,
+                  alignment: Alignment.center,
+                  child: CounterDisplay(),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    context.read<CounterProvider>().increment();
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(15),
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.green.shade200,
+                    ),
+                    child: Icon(Icons.add, size: 30, color: Colors.grey.shade900),
                   ),
-                  child: Icon(Icons.add, size: 30, color: Colors.grey.shade900),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20,),
+        
+            GestureDetector(
+              onTap: (){
+                context.read<CounterProvider>().reset();
+              },
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  shape: BoxShape.circle
+                ),
+                child: Icon(Icons.refresh,
+                size: 30,
                 ),
               ),
-            ],
-          ),
+            ),
+          ]
         ),
       ),
     );
