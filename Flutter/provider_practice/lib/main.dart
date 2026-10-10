@@ -54,14 +54,7 @@ class MyApp extends StatelessWidget {
               Container(
                 width: 40,
                 alignment: Alignment.center,
-                child: Consumer<CounterProvider>(
-                  builder: (context, provider, child) {
-                    return Text(
-                      provider.count.toString(),
-                      style: TextStyle(fontSize: 30),
-                    );
-                  },
-                ),
+                child: CounterDisplay(),
               ),
               GestureDetector(
                 onTap: () {
@@ -80,6 +73,22 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+
+class CounterDisplay extends StatelessWidget {
+  const CounterDisplay({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final counter = context.watch<CounterProvider>();
+    return Text(
+      counter.count.toString(),
+      style: TextStyle(
+        fontSize: 30,
       ),
     );
   }
